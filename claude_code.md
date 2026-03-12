@@ -41,9 +41,27 @@ O claude por padrão não tem permissões, vc vai dando as permissões para ele 
 * claude mcp remove <nome do mcp> -> Remove o MCP
 * claude mcp add <nome do mcp> <comando de acesso ao mcp>
 
+MCP
+* É habilitar uma comunicação entre o claude com uma ferramenta, permitindo ele realizar ações diretas nessas ferramentas, Ex:
+	* Crie uma VM ubuntu linux? -> Faz o virtualbox subir uma vm desse tipo
+
+
 settings.local.json
 * Esse é o arquivo de MCP do seu projeto
 * Os .local vc não commit, os sem, vc commita para é para uso geral
+
+Ex:
+{
+	"permissions": {
+		"allow": [
+			"Bash(kubectl get:*)"
+		],
+		"deny": [
+			"Base(kubectl delete *)"
+		]
+	}
+}
+
 
 
 Escrita e/ou planejamento
@@ -97,3 +115,28 @@ Há uma fila de processamento no CLI, se tentar fazer algo enquanto está execut
 ---------------------------------------------
 ### Alucinação
 * Isso ocorre quando se vai perdendo o contexto e/ou quando se vai alterando o contexto demais, Ex: Consumiu todo o contexto e ele acaba limpando as informações mais antigas, se ele perder algo importante, as repostas podem ficar comprometidas, outro exemplo é, começar o prompt pedindo A e terminar em Z, sendo que no meio teve 5, pastel, cobra, carnaval e coisas do tipo, gera uma confusam que torna os modelos transformers inuteis pois não enxegam relação
+
+----------------------------------------------
+### Modelos
+* Haiku ->  Modelo mais simples -> Custo baixo/inteligencia baixa
+* Sonnet -> Modelo equibilibrado -> Capacidade com custo
+* Opus -> Modelo com capacidade de pensamento -> Custo alto, qualidade
+
+Vc consegue trocar de modelo no claude code com o comando:
+* /model
+
+----------------------------------------------
+### Janela de Contexto
+* É toda a "conversa" com a IA que tem limites "fisicos" (tokens), após atingir este limite, os dados mais antigos são limpos ou resumidos, para assim dar mais espaço para as novas entradas
+
+----------------------------------------------
+### SubAgentes
+* Um agente geral (orquestrador) vai requisitar ações de agente especialistas (subagente), isso é:
+	* Vc precisa de um 5/6 agentes especialistas e 1 orquestrador para isso, pode ser que saia mais barato e mais eficaz que somente pegar um modelo de inteligencia geral
+	* É uma questão de planejamento e custos
+
+----------------------------------------------
+### Skills
+* Templates de ações REPETIVEIS e que podem ser reaproveitadas em vários projetos ou várias execuções no mesmo projeto
+* Onde as skills são colocadas:
+	* .claude/skills/<diretorio da skill>/SKILL.md
