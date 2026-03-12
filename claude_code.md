@@ -140,3 +140,10 @@ Vc consegue trocar de modelo no claude code com o comando:
 * Templates de ações REPETIVEIS e que podem ser reaproveitadas em vários projetos ou várias execuções no mesmo projeto
 * Onde as skills são colocadas:
 	* .claude/skills/<diretorio da skill>/SKILL.md
+
+--------------------------------------------
+### Versão do claude code
+claude -v
+
+--------------------------------------------
+
