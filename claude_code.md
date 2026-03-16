@@ -20,6 +20,9 @@ Forma de trabalhar com o CLAUDE.md
 Para o claude carregar essas infos, ele deve ser finalizado "/exit" e iniciado "claude" para carregar os .md do DIR
 
 
+O CLAUDE.md é o arquivo padrão, más não necessariamente o obrigatorio, vc poderia criar qualquer arquivo de qualquer extensão para realizar a tarefa de ter um descritivo para sua IA, Ex: modelo.md, vc só precisa subir o agente / LLM e falar para carregar o "modelo.md" e pronto, sua IA entenderia oq o projeto tem que fazer.
+P.S: Sempre configure este modelo da melhor forma possível
+
 
 * /init <contexto opcional> -> Gera um informativo sobre o diretorio do projeto -> Ajuda o claude durante o desenvolvimento
 
@@ -101,6 +104,11 @@ Há uma fila de processamento no CLI, se tentar fazer algo enquanto está execut
 * É um agente que se entrega com várias ferramentas
 
 
+### Como da para trabalhar com ele?
+* Via command line
+* Via extensão em IDE
+* Via web caso conectar a antropic no seu repositorio
+
 ---------------------------------------------
 
 ### Skills
@@ -146,4 +154,70 @@ Vc consegue trocar de modelo no claude code com o comando:
 claude -v
 
 --------------------------------------------
+### Verificar o consumo de contexto do projeto
+/context
 
+--------------------------------------------
+Se estiver utilizando a versão com o IDE do VSCODE, vc pode ver o consumo de tokens pelas opções "/" -> "Model/Account & Usage..." 
+Isso é mais barato que deixar uma aba no navegador só pra isso
+
+---------------------------------------------
+Para apontar arquivos de forma mais especifica, use @ no nome ou path do arquivo, Ex:
+@index.php
+
+---------------------------------------------
+Opção Thinking -> Vc pode ligar / desligar o raciocinio aprofundado de algo caso deseje, isso pode economizar tokens, más pode diminuir a eficiencia da ferramenta
+
+---------------------------------------------
+A melhor forma de um IA entender oq queremos é com base em texto, de preferencia com detalhes suficientes sobre oq queremos, Ex:
+* Documentos de PRD (Requisitos de projeto)
+* Fluxogramas de etapas da ferramenta
+* Entre ourtos
+São excelentes dados a serem imputados dentro da IA para geração de codigo
+
+---------------------------------------------
+### Formas de economizar com a IA
+* Usar coisas já prontas que satisfazem a necessidade, Ex: Arquivos de JS, CSS e demais, onde vc só quer que ele construa algo com base naquilo
+* Usar configs já disponiveis
+* Promtps mais precisos para atender a demanda
+* Evitar de gerar TODO o projeto com a IA e somente usar a mesma para atender aos problemas mais custosos
+* Caso for trabalhar com só alguns arquivos dentro de um projeto, aponte eles, isso evita do mesmo ter de gastar tokens para procurar, interpretar e demais -> Facilite e aponte oq vc quer usar 
+
+
+---------------------------------------------
+### Comandos
+/add-dir -> Adicionar um diretorio para o projeto
+/bug -> Reportar bugs para a anthropic
+/clear -> limpar toda a conversa anterior e contexto -> Limpeza da sessão caso queria fazer outra ação
+/compact -> Faz um resumo do conversado até o momento e gera um contexto (Más limpa faz o historico de conversa e contextos a não ser oq compactado)
+/stats -> Mostra o uso da ferramenta
+/export -> Exporta a conversa para o ctrl+c / ctrl+v (Copia para a area de memoria) ou em arquivo
+/help -> Ajuda
+/hooks -> Gatilhos com base em ações para acionar algo no sistema
+/install-github-app -> Seta permissões para ações no github via o agente
+/login -> Realizar login
+/logout -> Finalizar sessão do usuário
+/mcp -> Configurar servidores MCP
+/memory -> Ações sobre o arquivo CLAUDE.md
+/migrate-installer -> Migrar configurações já setadas de forma global a uma nova sessão
+/model -> Setar o modelo de LLM da antropic
+/permissions -> Permissões gerais sobre comandos, diretorios, onde ele afeta e demais
+/pr-comments -> Pega os comentarios de PRs do GitHub
+/release-notes -> Mostra o informativo da versão
+/resume -> Resume a conversa atual
+/review -> Revisão de PR
+/status -> Status geral do agente e uso
+
+
+---------------------------------------------
+### MCP
+* https://github.com/upstash/context7
+Dar uma olhada nesse cara para a geração de contextos mais completos com base em descrições do usuário
+* Usuário entra com a descr e chamada ele -> Ele gera um contexto mais completo / complexo -> Manda a IA processar
+
+
+
+---------------------------------------------
+### Sub-agentes
+* Um agente especializado em algo totalmente a parte do agente principal e seu contexto e permite trabalhar de forma paralela
+* O code não tem controle sobre a operação do sub, más consegue realizar comunicação em linguagem normal
