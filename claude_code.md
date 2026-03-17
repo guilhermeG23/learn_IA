@@ -221,3 +221,7 @@ Dar uma olhada nesse cara para a geração de contextos mais completos com base 
 ### Sub-agentes
 * Um agente especializado em algo totalmente a parte do agente principal e seu contexto e permite trabalhar de forma paralela
 * O code não tem controle sobre a operação do sub, más consegue realizar comunicação em linguagem normal
+* Estrutura de diretorio:
+    * .claude/agents/<diretorio do subagente>
+
+
