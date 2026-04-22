@@ -110,12 +110,6 @@ Há uma fila de processamento no CLI, se tentar fazer algo enquanto está execut
 * Via web caso conectar a antropic no seu repositorio
 
 ---------------------------------------------
-
-### Skills
-* Templates de ações para o cloud executar ações repetitivas
-
-
----------------------------------------------
 ### Prompt e contexto
 * Prompt -> Forma de requisitar coisas com IA
 * Contexto -> Conteudo relacionado ao que se está fazendo
@@ -207,7 +201,9 @@ São excelentes dados a serem imputados dentro da IA para geração de codigo
 /resume -> Resume a conversa atual
 /review -> Revisão de PR
 /status -> Status geral do agente e uso
-
+/plan -> Não realiza o code diretorio -> Avalia a requisição para quebrar em etapas
+/rewind -> È um ctrl + z de conversas de IA -> Vc pode voltar para um ponto de uma conversa e continuar a partir daquele momento afim de evitar problemas que a sessão atual está enfretando
+/simplify -> Simplifica os retornos -> Diminui a complexidade e remove detalhes que considera desnecessário
 
 ---------------------------------------------
 ### MCP
@@ -225,3 +221,14 @@ Dar uma olhada nesse cara para a geração de contextos mais completos com base 
     * .claude/agents/<diretorio do subagente>
 
 
+---------------------------------------------
+### Deixar o CLAUDE fazer oq quiser no sistema
+
+claude --dangerously-skip-permissions
+
+Aqui ele tem permissão para alterar oq quiser, executar e excluir, quase permissão total no sistema
+
+
+---------------------------------------------
+### Manejamento
+O CLAUDE.md não deve conter ações especificas, para isso vc cria um arquivo .md para a ação e o chama somente quando necessário
